@@ -1,3 +1,4 @@
+use clap::{Parser, Subcommand};
 use http_body_util::{BodyExt, Full};
 use hyper::{body::Bytes, Request};
 use hyper_util::client::legacy::Client;
@@ -6,6 +7,19 @@ use std::error::Error;
 use tokio::io::{self, AsyncWriteExt as _};
 
 use containd::*;
+
+#[derive(Parser)]
+#[command(version, about, long_about = None)]
+#[command(propagate_version = true)]
+struct Cli {
+    #[command(subcommand)]
+    command: Commands,
+}
+
+#[derive(Subcommand)]
+enum Commands {
+    Add { name: Option<String> },
+}
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {

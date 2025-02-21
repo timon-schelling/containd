@@ -24,3 +24,4 @@ rand = "0.9"
 hex = "0.4"
 pnet = "0.35"
 regex = "1"
+clap = { version = "4", features = ["derive"] }
