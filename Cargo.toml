@@ -6,10 +6,10 @@ edition = "2021"
 [lib]
 
 [[bin]]
-name = "daemon"
+name = "containd"
 
 [[bin]]
-name = "client"
+name = "containctl"
 
 [dependencies]
 hyperlocal = "0.9"
